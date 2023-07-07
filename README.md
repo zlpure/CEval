@@ -1,7 +1,7 @@
 # C-Eval + ChatGLM2-6B
 本项目旨在使用开源的[ChatGLM2-6B](https://github.com/THUDM/ChatGLM2-6B/tree/main)模型，在中文评测框架[C-Evaluation](https://cevalbenchmark.com/)上进行效果评测。
 
-官方评测结果是Average Score 50.1，本项目的结果是50.7，评测结果基本一致。具体结果列表如下：
+C-Eval各个模型总的评测结果请参考[LeaderBoard](https://cevalbenchmark.com/static/leaderboard.html)，测试样例请参看[探索样例](https://cevalbenchmark.com/static/explore.html)。ChatGLM2-6B官方评测结果的Average Score是50.1，本项目的结果是50.7，评测结果基本一致。具体结果列表如下：
 
 |  Model  | Average  | STEM | Social  Sciences | Humanities |  Others |  
 |  ----  | ----  | ----  |----  |----  |----  |
