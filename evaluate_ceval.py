@@ -8,7 +8,7 @@ from transformers import AutoTokenizer, AutoModel
 from tqdm import tqdm
 import collections
 
-os.environ['CUDA_VISIBLE_DEVICES']='4,5,6,7'
+os.environ['CUDA_VISIBLE_DEVICES']='3'
 
 tokenizer = AutoTokenizer.from_pretrained("/data1/zengliang/chatglm2-6b", trust_remote_code=True)
 model = AutoModel.from_pretrained("/data1/zengliang/chatglm2-6b", trust_remote_code=True).bfloat16().cuda()
@@ -19,6 +19,8 @@ choice_tokens = [tokenizer.encode(choice, add_special_tokens=False)[0] for choic
 
 def build_prompt(text):
     return "[Round {}]\n\n问：{}\n\n答：".format(1, text)
+    # return "问：{}\n\n答：".format(1, text)
+    
 
 
 extraction_prompt = '综上所述，ABCD中正确的选项是：'
@@ -26,7 +28,7 @@ extraction_prompt = '综上所述，ABCD中正确的选项是：'
 accuracy_dict, count_dict = {}, {}
 all_answers = collections.OrderedDict()
 with torch.no_grad():
-    for entry in glob.glob("/home/zengliang/ChatGLM2-6B/evaluation/CEval/test/**/*.jsonl", recursive=True):
+    for entry in glob.glob("/home/zengliang/CEval/CEval/test/**/*.jsonl", recursive=True):
         dataset = []
         with open(entry, encoding='utf-8') as file:
             for line in file:
